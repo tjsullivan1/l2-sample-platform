@@ -4,7 +4,7 @@ param appInsightsName string ='ai-tjscatest'
 param location string = 'eastus'
 
 
-resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-03-01-preview' = {
+resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
   name: logAnalyticsWorkspaceName
   location: location
   properties: any({
@@ -18,7 +18,7 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-03
   })
 }
 
-resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
+resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: appInsightsName
   location: location
   kind: 'web'
@@ -27,7 +27,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
   }
 }
 
-resource containerAppsEnv 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource containerAppsEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: containerAppsEnvName
   location: location
   properties: {
@@ -42,7 +42,7 @@ resource containerAppsEnv 'Microsoft.App/managedEnvironments@2022-01-01-preview'
   }
 }
 
-resource helloWorld 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource helloWorld 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'hello-world'
   location: location
   properties: {
